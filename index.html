@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookwave Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:#07070a;color:#fff}
+
+nav{position:fixed;width:100%;top:0;display:flex;justify-content:space-between;padding:15px 40px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);z-index:1000}
+nav h2{font-weight:600}
+nav a{color:#aaa;margin-left:20px;text-decoration:none;font-size:0.9rem}
+nav a:hover{color:#00ffd5}
+
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:radial-gradient(circle,#141422,#07070a)}
+.hero h1{font-size:3.5rem}
+.hero p{color:#aaa;margin-top:10px}
+
+section{padding:80px 20px;max-width:1200px;margin:auto}
+h2{text-align:center;margin-bottom:40px}
+
+.player-bar{position:fixed;bottom:0;width:100%;background:#0d0d14;padding:10px;display:flex;align-items:center;justify-content:space-between}
+.player-bar audio{width:60%}
+
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
+.track{background:#11111a;border-radius:15px;padding:15px;transition:0.3s}
+.track:hover{transform:translateY(-6px)}
+.cover{width:100%;height:200px;object-fit:cover;border-radius:10px}
+.track h3{margin:10px 0}
+.btn{display:inline-block;margin-top:10px;padding:6px 12px;border-radius:20px;background:#00ffd5;color:#000;text-decoration:none;font-size:0.8rem}
+
+.about,.contact{text-align:center;color:#bbb;max-width:700px;margin:auto}
+
+footer{text-align:center;padding:20px;background:#050508;color:#666;margin-bottom:60px}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>Cookwave</h2>
+  <div>
+    <a href="#music">Music</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Cookwave Studio</h1>
+  <p>Sound That Cuts Through The Noise</p>
+</div>
+
+<section id="music">
+<h2>Featured Releases</h2>
+<div class="tracks">
+
+<div class="track">
+<img src="cover1.jpg" class="cover">
+<h3>Track One</h3>
+<p>Progressive House</p>
+<button class="btn" onclick="playSong('song1.mp3','Track One')">Play</button>
+<a href="song1.mp3" class="btn" download>Download</a>
+</div>
+
+<div class="track">
+<img src="cover2.jpg" class="cover">
+<h3>Track Two</h3>
+<p>EDM</p>
+<button class="btn" onclick="playSong('song2.mp3','Track Two')">Play</button>
+<a href="song2.mp3" class="btn" download>Download</a>
+</div>
+
+</div>
+</section>
+
+<section id="about">
+<h2>About</h2>
+<p class="about">Cookwave Studio is a next-generation music production house delivering cutting-edge sound design, mixing, mastering, and commercial-ready music across genres.</p>
+</section>
+
+<section id="contact">
+<h2>Bookings</h2>
+<p class="contact">Email: your@email.com<br>Instagram: @cookwave</p>
+</section>
+
+<footer>
+© 2026 Cookwave Studio
+</footer>
+
+<div class="player-bar">
+<span id="nowPlaying">Nothing Playing</span>
+<audio id="mainPlayer" controls></audio>
+</div>
+
+<script>
+function playSong(src,title){
+  const player=document.getElementById('mainPlayer');
+  const label=document.getElementById('nowPlaying');
+  player.src=src;
+  player.play();
+  label.innerText="Now Playing: "+title;
+}
+</script>
+
+</body>
+</html>
